@@ -50,13 +50,16 @@ if (!empty($errors) && is_array($errors)) {
     echo var_dump($error) . "<br /><br />\n";
   }
 }
-?>
+
 if(strtoupper($country['countryCode']) != "US"){
     $mageRunCode = isset($_SERVER['MAGE_RUN_CODE']) ? $_SERVER['MAGE_RUN_CODE'] : 'international_store_view';
     $mageRunType = isset($_SERVER['MAGE_RUN_TYPE']) ? $_SERVER['MAGE_RUN_TYPE'] : 'store';
-}else{
+}
+
+else{
     $mageRunCode = isset($_SERVER['MAGE_RUN_CODE']) ? $_SERVER['MAGE_RUN_CODE'] : 'usa_store_view';
     $mageRunType = isset($_SERVER['MAGE_RUN_TYPE']) ? $_SERVER['MAGE_RUN_TYPE'] : 'store';
 }
+
 Mage::run($mageRunCode, $mageRunType);        
 
