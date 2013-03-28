@@ -16,11 +16,11 @@ After the account will be activated, go to http://ipinfodb.com , login and go to
 Copy there the folder "geoip". The folder 'geoip' contains a file called: "ip2locationlite.class.php".
 
 
-**3**. Go to your index.php from the Magento's root folder and make the changes from my index.php
+**3**. Go to your index.php from the Magento's root folder and make the changes just like below (just like I explained in the file index.php):
 
 **i) Replace this code:**
 
-<?php
+
 /* Store or website code */
 $mageRunCode = isset($_SERVER['MAGE_RUN_CODE']) ? $_SERVER['MAGE_RUN_CODE'] : '';
  
@@ -28,12 +28,12 @@ $mageRunCode = isset($_SERVER['MAGE_RUN_CODE']) ? $_SERVER['MAGE_RUN_CODE'] : ''
 $mageRunType = isset($_SERVER['MAGE_RUN_TYPE']) ? $_SERVER['MAGE_RUN_TYPE'] : 'store';
  
 Mage::run($mageRunCode, $mageRunType);
-?>
+
 
 
 **ii) With this code:**
 
-<?php
+
 //########### GEOIP ############//
 include('geoip/ip2locationlite.class.php');
   
@@ -59,4 +59,4 @@ if(strtoupper($country['countryCode']) != "US"){
     $mageRunType = isset($_SERVER['MAGE_RUN_TYPE']) ? $_SERVER['MAGE_RUN_TYPE'] : 'store';
 }
 Mage::run($mageRunCode, $mageRunType);        
-?>
+
