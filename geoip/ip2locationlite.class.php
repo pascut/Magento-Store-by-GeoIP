@@ -1,4 +1,8 @@
 <?php
+/*
+Downloaded from here: www.ipinfodb.com/ip_location_api.php
+*/
+
 final class ip2location_lite{
   protected $errors = array();
 	protected $service = 'api.ipinfodb.com';
