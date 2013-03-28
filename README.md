@@ -16,11 +16,11 @@ After the account will be activated, go to http://ipinfodb.com , login and go to
 Copy there the folder "geoip". The folder 'geoip' contains a file called: "ip2locationlite.class.php".
 
 
-**3**. Go to index.php
+**3**. Go to your index.php from the Magento's root folder and make the changes from my index.php
 
 **i) Replace this code:**
 
-
+<?php
 /* Store or website code */
 $mageRunCode = isset($_SERVER['MAGE_RUN_CODE']) ? $_SERVER['MAGE_RUN_CODE'] : '';
  
@@ -28,12 +28,12 @@ $mageRunCode = isset($_SERVER['MAGE_RUN_CODE']) ? $_SERVER['MAGE_RUN_CODE'] : ''
 $mageRunType = isset($_SERVER['MAGE_RUN_TYPE']) ? $_SERVER['MAGE_RUN_TYPE'] : 'store';
  
 Mage::run($mageRunCode, $mageRunType);
-
+?>
 
 
 **ii) With this code:**
 
-
+<?php
 //########### GEOIP ############//
 include('geoip/ip2locationlite.class.php');
   
@@ -50,7 +50,7 @@ if (!empty($errors) && is_array($errors)) {
     echo var_dump($error) . "<br /><br />\n";
   }
 }
-
+?>
 if(strtoupper($country['countryCode']) != "US"){
     $mageRunCode = isset($_SERVER['MAGE_RUN_CODE']) ? $_SERVER['MAGE_RUN_CODE'] : 'international_store_view';
     $mageRunType = isset($_SERVER['MAGE_RUN_TYPE']) ? $_SERVER['MAGE_RUN_TYPE'] : 'store';
@@ -59,3 +59,4 @@ if(strtoupper($country['countryCode']) != "US"){
     $mageRunType = isset($_SERVER['MAGE_RUN_TYPE']) ? $_SERVER['MAGE_RUN_TYPE'] : 'store';
 }
 Mage::run($mageRunCode, $mageRunType);        
+?>
